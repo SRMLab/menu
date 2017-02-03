@@ -1,0 +1,33 @@
+{
+  "name": "menu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec babel-node server.js",
+    "test": "mocha --compilers js:babel-core/register --require babel-polyfill"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sooleesj/menu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sooleesj/menu/issues"
+  },
+  "homepage": "https://github.com/sooleesj/menu#readme",
+  "dependencies": {
+    "express": "^4.14.1",
+    "mongoose": "^4.8.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.22.2",
+    "babel-polyfill": "^6.22.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0"
+  }
+}
