@@ -4,9 +4,10 @@ import mongoose from 'mongoose'
 // create the schema
 const Schema = mongoose.Schema;
 const MenuSchema = new Schema({
-  name: String,
-  price: Number,
+  name: { type: String, required: true },
+  price: { type: Number, required: true },
   vegan: Boolean,
+  description: String,
   _store: {type: Schema.Types.ObjectId, ref: 'Store'},
 }, {
   timestamps: true

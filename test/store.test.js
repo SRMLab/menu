@@ -51,6 +51,16 @@ describe('Stores', () => {
         done();
       })
   })
+  it('it should GET a store by id', (done) => {
+    chai.request('http://localhost:8000')
+      .get('/api/stores/' + storeId)
+      .end((err,res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        res.body.should.have.property('name');
+        done();
+      })
+  })
   it('it should GET all the stores', (done) => {
     chai.request('http://localhost:8000')
       .get('/api/stores')
@@ -96,15 +106,3 @@ describe('Stores', () => {
 })
 
 
-// describe('Store', () => {
-//   describe('model', () => {
-//     it('shoule be invalid if name is empty', (done) => {
-//       var m = new Store();
-//       m.validate((err) => {
-//         console.log(err);
-//         expect(err.errors.name).to.exist;
-//         done();
-//       })
-//     })
-//   })
-// })
