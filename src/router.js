@@ -4,14 +4,14 @@ import Store from './Models/Store';
 import Menu from './Models/Menu';
 
 router.use( function timeLog (req, res, next){
-  console.log('Time: ', Date.now())
+  // console.log('Time: ', Date.now())
   next()
 })
 
 // get all stores
 router.get('/stores', function(req,res){
   Store.find({}, function(err, stores){
-    
+
     if (err) res.send("Something went wrong!");
     res.json(stores);
   });
@@ -36,7 +36,7 @@ router.post('/stores', function(req,res){
 
 // update a store
 router.put('/stores/:id', function(req,res){
-  Store.findByIdAndUpdate(req.params.id, 
+  Store.findByIdAndUpdate(req.params.id,
   {$set: {...req.body} },
   { new: true }
   ).exec(function (err, store){
@@ -60,11 +60,11 @@ router.delete('/stores/:id', function(req,res){
 router.post('/:storeId/menus', function(req,res){
   Store.findById(req.params.storeId).exec(function (err, store){
     const newMenu = new Menu({_store:req.params.storeId, ...req.body});
-    console.log("newMenu:::   ",newMenu);
+    // console.log("newMenu:::   ",newMenu);
     newMenu.save(function(err, menu){
       if (err) res.json(err);
-      console.log("Store:::   ",store)
-      console.log("MENU::::   ",menu)
+      // console.log("Store:::   ",store)
+      // console.log("MENU::::   ",menu)
       store._menus.push(menu._id);
       store.save(function(err){
         if (err) res.json(err);
@@ -92,7 +92,7 @@ router.get('/menus/:menuId', function(req,res){
 
 // update a menu
 router.put('/menus/:menuId', function(req,res){
-  Menu.findByIdAndUpdate(req.params.menuId, 
+  Menu.findByIdAndUpdate(req.params.menuId,
   {$set: {...req.body} },
   { new: true }
   ).exec(function (err, menu){
